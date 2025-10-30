@@ -1,0 +1,2 @@
+epic,size,pnl,direction,exit_type,entry_price,exit_price,opened_at,closed_at,hook_name,spread_cost
+META,1.5077723344758807,-0.0,SELL,EOW_CLOSE,663.2301025390625,663.2301025390625,2025-10-30 00:00:00-04:00,2025-10-30 00:00:00-04:00,ATR BRK OUT,0.0
