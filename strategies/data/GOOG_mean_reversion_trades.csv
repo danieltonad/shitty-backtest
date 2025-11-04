@@ -1,2 +1,0 @@
-epic,size,pnl,direction,exit_type,entry_price,exit_price,opened_at,closed_at,hook_name,spread_cost
-GOOG,4.21070351117906,65.20269504042787,BUY,EOW_CLOSE,237.49000549316406,253.7899932861328,2025-10-10 00:00:00-04:00,2025-10-17 00:00:00-04:00,ATR BRK OUT,3.4317207916014665

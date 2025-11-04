@@ -149,7 +149,7 @@ def backtest_mean_reversion(
             "exit_price": exit_price,
             "opened_at": entry_row["Date"],
             "closed_at": df.iloc[exit_index]["Date"],
-            "hook_name": "ATR BRK OUT",
+            "hook_name": "MEAN REVERSION",
             "spread_cost": spread_cost
         })
 

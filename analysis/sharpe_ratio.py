@@ -115,7 +115,7 @@ def analyze_trades(csv_path: str | list):
 
 
 if __name__ == "__main__":
-    trades = [r"C:\Users\msiso\Downloads\20-24-oct-trades.csv"]
+    trades = [ r"C:\Users\msiso\Downloads\27-31-oct-trades.csv"]
     df, overall, by_strategy, by_side = analyze_trades(trades)
 
 # epic, size, pnl, direction, entry_price, exit_price, opened_at, closed_at, hook_name, spread_cost

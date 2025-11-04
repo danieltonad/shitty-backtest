@@ -1,2 +1,0 @@
-epic,size,pnl,direction,exit_type,entry_price,exit_price,opened_at,closed_at,hook_name,spread_cost
-MSFT,1.9004361236438774,0.0,BUY,EOW_CLOSE,526.1950073242188,526.1950073242188,2025-10-30 00:00:00-04:00,2025-10-30 00:00:00-04:00,ATR BRK OUT,0.0
