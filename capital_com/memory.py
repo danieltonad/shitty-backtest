@@ -1,14 +1,12 @@
 from .api import get_auth_header
 from collections import defaultdict, deque
 from typing import Deque, Dict, Tuple
-from datetime import datetime
-import time
 
 class Memory:
-    def __init__(self, bar_seconds=30):
+    def __init__(self, bar_seconds=11):
         self.capital_auth_header: dict = {}
         self.tick_history: Dict[str, Deque[dict]] = defaultdict(lambda: deque(maxlen=1000))
-        self.bars: Dict[str, Deque[dict]] = defaultdict(lambda: deque(maxlen=100))  # store 100 bars
+        self.bars: Dict[str, Deque[dict]] = defaultdict(lambda: deque(maxlen=500))  # store 100 bars
         self.bar_seconds = bar_seconds
         self.current_bar: Dict[str, dict] = {}
         self.last_price: Dict[str, Tuple[float, float]] = {}
@@ -16,7 +14,7 @@ class Memory:
     async def update_auth_header(self):
         self.capital_auth_header = await get_auth_header()
 
-    def get_last_price(self, epic: str) -> float:
+    def get_last_price(self, epic: str) -> Tuple[float, float]:
         return self.last_price[epic]
 
     async def append_tick_data(self, epic: str, ask: float, bid: float, timestamp: int):
@@ -65,8 +63,8 @@ class Memory:
                 self.bars[epic].append(bar)
                 
                 # Check for trading signals
-                from .event import get_latest_signal
-                get_latest_signal(epic)
+                from .event import strategies
+                await strategies(epic)
 
                 # Start new bar
                 self.current_bar[epic] = {
