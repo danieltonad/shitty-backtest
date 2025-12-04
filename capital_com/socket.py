@@ -72,7 +72,7 @@ class CapitalSocket:
                 try:
                     message = await asyncio.wait_for(self.websocket.recv(), timeout=300)
                     data = json.loads(message)
-
+                    
                     if data["destination"] == "marketData.subscribe":
                         print(f"Subscription confirmed: {data['payload']}")
                     elif data["destination"] == "marketData.unsubscribe":
@@ -85,6 +85,7 @@ class CapitalSocket:
                             bid=payload["bid"],
                             timestamp=payload["timestamp"]
                         )
+                        
 
                 except (asyncio.TimeoutError, websockets.exceptions.ConnectionClosedError) as e:
                     print(f"WebSocket error or timeout: {e}")
