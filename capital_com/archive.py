@@ -3,6 +3,7 @@ from typing import Optional
 import asyncio
 from datetime import datetime, time
 import pandas as pd
+from .hook import send_hook
 
 # --- External imports (you already have these) ---
 from .simulator import new_order, SignalType
@@ -57,14 +58,14 @@ def atr_14(bars_list: list) -> float:
 
 
 
-def get_latest_signal(epic: str, lookback_bars: int = 40) -> Optional[SignalType]:
+async def get_latest_signal(epic: str, lookback_bars: int = 40) -> Optional[SignalType]:
     """
     Micro-breakout strategy with trend + volatility filtering.
     Designed for Capital.com's tick-based 30-sec bars.
     """
     # Session filter (critical on Capital.com)
-    if not is_trading_session():
-        return None
+    # if not is_trading_session():
+    #     return None
 
     bars = memory.bars[epic]
     if len(bars) < lookback_bars + 3:  # need bars[-3], [-2], [-1]
@@ -132,9 +133,11 @@ def get_latest_signal(epic: str, lookback_bars: int = 40) -> Optional[SignalType
            (signal == SignalType.SELL and stop_loss <= entry_price):
             return None
 
-        asyncio.create_task(
-            new_order(epic, signal, entry_price, take_profit, stop_loss)
-        )
+        # asyncio.create_task(
+        #     new_order(epic, signal, entry_price, take_profit, stop_loss)
+        # )
+        # await send_hook(ticker=epic, hook_name="STRATEGY", direction=signal, amount=50, profit=250, loss=250, trail_sl=100, recalibrate=True, mkt_closed=True, strategy=True)
+        print(f"Archive Signal | {epic}: {signal.value} @ {entry_price:.4f} | TP: {take_profit:.4f} | SL: {stop_loss:.4f}")
         return signal
 
     return None

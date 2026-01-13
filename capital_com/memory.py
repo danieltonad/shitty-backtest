@@ -3,7 +3,7 @@ from collections import defaultdict, deque
 from typing import Deque, Dict, Tuple
 
 class Memory:
-    def __init__(self, bar_seconds=111):
+    def __init__(self, bar_seconds=1):
         self.capital_auth_header: dict = {}
         self.tick_history: Dict[str, Deque[dict]] = defaultdict(lambda: deque(maxlen=1000))
         self.bars: Dict[str, Deque[dict]] = defaultdict(lambda: deque(maxlen=500))  # store 100 bars
@@ -63,8 +63,10 @@ class Memory:
                 self.bars[epic].append(bar)
                 
                 # Check for trading signals
-                from .event import strategies
-                await strategies(epic)
+                # from .event import strategies
+                from .archive import get_latest_signal
+                # await strategies(epic)
+                await get_latest_signal(epic)
 
                 # Start new bar
                 self.current_bar[epic] = {

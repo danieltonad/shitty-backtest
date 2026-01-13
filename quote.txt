@@ -1,0 +1,13 @@
+{
+    "status": "OK",
+    "destination": "quote",
+    "payload": {
+        "epic": "OIL_CRUDE",
+        "product": "CFD",
+        "bid": 93.87,
+        "bidQty": 4976.0,
+        "ofr": 93.9,
+        "ofrQty": 5000.0,
+        "timestamp": 1660297190627
+    }
+}
