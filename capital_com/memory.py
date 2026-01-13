@@ -3,7 +3,7 @@ from collections import defaultdict, deque
 from typing import Deque, Dict, Tuple
 
 class Memory:
-    def __init__(self, bar_seconds=1):
+    def __init__(self, bar_seconds=1001):
         self.capital_auth_header: dict = {}
         self.tick_history: Dict[str, Deque[dict]] = defaultdict(lambda: deque(maxlen=1000))
         self.bars: Dict[str, Deque[dict]] = defaultdict(lambda: deque(maxlen=500))  # store 100 bars

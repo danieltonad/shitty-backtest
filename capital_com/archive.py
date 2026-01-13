@@ -136,7 +136,7 @@ async def get_latest_signal(epic: str, lookback_bars: int = 40) -> Optional[Sign
         # asyncio.create_task(
         #     new_order(epic, signal, entry_price, take_profit, stop_loss)
         # )
-        # await send_hook(ticker=epic, hook_name="STRATEGY", direction=signal, amount=50, profit=250, loss=250, trail_sl=100, recalibrate=True, mkt_closed=True, strategy=True)
+        await send_hook(ticker=epic, hook_name="STRATEGY", direction=signal, amount=50, profit=250, loss=250, trail_sl=200, recalibrate=True, mkt_closed=True, strategy=True)
         print(f"Archive Signal | {epic}: {signal.value} @ {entry_price:.4f} | TP: {take_profit:.4f} | SL: {stop_loss:.4f}")
         return signal
 

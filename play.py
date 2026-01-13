@@ -10,10 +10,11 @@ async def main():
     await memory.update_auth_header()
     await capital_socket.connect_websocket()
     await capital_socket.subscribe_to_epic("GOLD")
+    await capital_socket.subscribe_to_epic("SILVER")
     await capital_socket.subscribe_to_epic("US100")
     await capital_socket.subscribe_to_epic("EURUSD")
     await capital_socket.subscribe_to_epic("BTCUSD")
-    # await capital_socket.subscribe_to_epic("GBPUSD")
+    await capital_socket.subscribe_to_epic("GBPUSD")
 
     while True:
         await asyncio.sleep(5 * 60)
