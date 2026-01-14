@@ -58,7 +58,8 @@ class Memory:
                     "close": cb["close"],
                     "start_time": cb["start_time"],
                     "end_time": ts_sec,
-                    "avg_spread": cb["spread_sum"] / cb["tick_count"]
+                    "avg_spread": cb["spread_sum"] / cb["tick_count"],
+                    "volume": cb["tick_count"],
                 }
                 self.bars[epic].append(bar)
                 

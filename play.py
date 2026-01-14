@@ -11,10 +11,13 @@ async def main():
     await capital_socket.connect_websocket()
     await capital_socket.subscribe_to_epic("GOLD")
     await capital_socket.subscribe_to_epic("SILVER")
+    await capital_socket.subscribe_to_epic("OIL_CRUDE")
     await capital_socket.subscribe_to_epic("US100")
-    await capital_socket.subscribe_to_epic("EURUSD")
+    await capital_socket.subscribe_to_epic("US500")
     await capital_socket.subscribe_to_epic("BTCUSD")
+    await capital_socket.subscribe_to_epic("ETHUSD")
     await capital_socket.subscribe_to_epic("GBPUSD")
+    await capital_socket.subscribe_to_epic("AUDUSD")
 
     while True:
         await asyncio.sleep(5 * 60)
