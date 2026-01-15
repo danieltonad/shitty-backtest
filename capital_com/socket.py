@@ -85,6 +85,7 @@ class CapitalSocket:
                             bid=payload["bid"],
                             timestamp=payload["timestamp"]
                         )
+                        memory.log_quotes(epic=payload["epic"], ask=payload["ofr"], ask_size=payload.get("ofrQty", 0), bid=payload["bid"], bid_size=payload.get("bidQty", 0), timestamp=payload["timestamp"])
                         
 
                 except (asyncio.TimeoutError, websockets.exceptions.ConnectionClosedError) as e:

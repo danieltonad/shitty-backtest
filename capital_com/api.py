@@ -25,7 +25,7 @@ async def get_auth_header() -> None:
             'Content-Type': 'application/json'
         }
         async with AsyncClient() as session:
-            response = await session.post(f"https://demo-api-capital.backend-capital.com/api/v1/session", headers=headers, data=payload)
+            response = await session.post(f"https://api-capital.backend-capital.com/api/v1/session", headers=headers, data=payload)
         # print(response.status_code ,response.json())
         header: dict = response.headers
         CST = header.get("CST")

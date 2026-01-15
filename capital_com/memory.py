@@ -82,6 +82,13 @@ class Memory:
 
         self.tick_history[epic].append({"ask": ask, "bid": bid, "timestamp": timestamp})
 
+    
+    def log_quotes(self, epic: str, ask: float, ask_size: float, bid: float, bid_size: float, timestamp: int):
+        with open(f"./Quotes/{epic}_quotes.csv", "a") as f:
+            if f.tell() == 0:
+                f.write("timestamp,ask,ask_size,bid,bid_size\n")
+            f.write(f"{timestamp},{ask},{ask_size},{bid},{bid_size}\n")
+
 
 
 
